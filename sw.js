@@ -1,5 +1,5 @@
 // يحفظ التطبيق على الجهاز عشان يشتغل من غير إنترنت
-const CACHE = "adhkar-v1";
+const CACHE = "adhkar-v3";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", e => {
