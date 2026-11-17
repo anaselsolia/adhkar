@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1D5E50">
-<meta name="description" content="أذكار الصباح والمساء والنوم وبعد الصلاة والرقية الشرعية، بالعربية والإنجليزية والتركية والأردية والهندية.">
+<meta name="description" content="أذكار الصباح والمساء والنوم وبعد الصلاة، وأذكار في أي وقت، وأدعية الثناء على الله، والرقية الشرعية، بخمس لغات.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -142,6 +142,8 @@ const SEC_UI={
   evening:{ar:["المساء","أذكار المساء","من بعد العصر حتى أول الليل"],en:["Evening","Evening Adhkar","From after Asr until nightfall"],tr:["Akşam","Akşam Zikirleri","İkindiden gece başlayana kadar"],ur:["شام","شام کے اذکار","عصر کے بعد سے رات شروع ہونے تک"],hi:["शाम", "शाम के अज़कार", "अस्र के बाद से रात शुरू होने तक"]},
   sleep:{ar:["النوم","أذكار النوم","عند الاستلقاء على الفراش"],en:["Sleep","Before Sleep","When lying down in bed"],tr:["Uyku","Uyku Zikirleri","Yatağa uzanınca"],ur:["سونا","سونے کے اذکار","بستر پر لیٹتے وقت"],hi:["सोना", "सोने के अज़कार", "बिस्तर पर लेटते समय"]},
   prayer:{ar:["بعد الصلاة","أذكار بعد الصلاة","بعد السلام من الصلاة المفروضة"],en:["After Prayer","After the Prayer","After the salam of each obligatory prayer"],tr:["Namazdan Sonra","Namaz Sonrası Zikirler","Farz namazlarda selam verdikten sonra"],ur:["نماز کے بعد","نماز کے بعد کے اذکار","فرض نماز کا سلام پھیرنے کے بعد"],hi:["नमाज़ के बाद", "नमाज़ के बाद के अज़कार", "फ़र्ज़ नमाज़ का सलाम फेरने के बाद"]},
+  dhikr:{ar:["أذكار","أذكار في أي وقت","وِرد يومي يُقال في أي وقت من اليوم"],en:["Dhikr","Daily Dhikr","A daily wird you can say at any time of day"],tr:["Zikir","Günlük Zikir","Günün herhangi bir vaktinde okunabilen günlük vird"],ur:["اذکار","کسی بھی وقت کے اذکار","روزانہ کا ورد جو دن میں کسی بھی وقت پڑھا جا سکتا ہے"],hi:["अज़कार","किसी भी वक़्त के अज़कार","रोज़ाना का विर्द जो दिन में किसी भी वक़्त पढ़ा जा सकता है"]},
+  thana:{ar:["أدعية الثناء","أدعية الثناء على الله","ثناء على الله بما أثنى به على نفسه وبما علّمه النبي ﷺ"],en:["Praise","Praising Allah","Praising Allah with the words He and His Prophet ﷺ taught"],tr:["Sena","Allah'a Sena Duaları","Allah'ı, kendisinin ve Peygamber'inin (s.a.v.) öğrettiği sözlerle övmek"],ur:["ثنا","اللہ کی ثنا کی دعائیں","اللہ کی ثنا ان الفاظ سے جو اس نے اور اس کے نبی ﷺ نے سکھائے"],hi:["सना","अल्लाह की सना की दुआएं","अल्लाह की सना उन अलफ़ाज़ से जो उसने और उसके नबी ﷺ ने सिखाए"]},
   ruqyah:{ar:["الرقية","الرقية الشرعية","يقرؤها المسلم على نفسه أو على المريض، مع النفث ووضع اليد على موضع الألم"],en:["Ruqyah","Ruqyah (Healing Recitation)","Recite over yourself or the sick, blowing gently and placing your hand where it hurts"],tr:["Rukye","Şer'î Rukye","Kendine veya hastaya okunur; hafifçe üflenir ve el ağrıyan yere konur"],ur:["رقیہ","شرعی رقیہ (دم)","اپنے اوپر یا مریض پر پڑھیں، ہلکا سا پھونکیں اور درد کی جگہ پر ہاتھ رکھیں"],hi:["रुक़्या", "शरई रुक़्या (दम)", "अपने ऊपर या मरीज़ पर पढ़ें, हल्का सा फूंकें और दर्द की जगह पर हाथ रखें"]}
 };
 const COLL={
@@ -160,9 +162,14 @@ const SURA={
   araf:{ar:"الأعراف",en:"Al-A'raf",tr:"A'râf",ur:"الاعراف",hi:"अल-आराफ़"},
   yunus:{ar:"يونس",en:"Yunus",tr:"Yûnus",ur:"یونس",hi:"यूनुस"},
   taha:{ar:"طه",en:"Ta-Ha",tr:"Tâhâ",ur:"طٰہٰ",hi:"ता-हा"},
+  anbiya:{ar:"الأنبياء",en:"Al-Anbiya",tr:"Enbiyâ",ur:"الانبیاء",hi:"अल-अंबिया"},
   isra:{ar:"الإسراء",en:"Al-Isra",tr:"İsrâ",ur:"الاسراء",hi:"अल-इसरा"}
 };
 const H={
+  "دعاء الاستفتاح":{en:"Opening supplication of the prayer",tr:"İstiftah duası (Sübhâneke)",ur:"دعائے استفتاح (ثنا)",hi:"दुआ-ए-इस्तिफ़्ताह (सना)"},
+  "من دعاء النبي ﷺ في قيام الليل":{en:"From the Prophet's ﷺ night prayer supplication",tr:"Peygamber'in (s.a.v.) gece namazı duasından",ur:"نبی ﷺ کی تہجد کی دعا سے",hi:"नबी ﷺ की तहज्जुद की दुआ से"},
+  "دعاء الكرب":{en:"Supplication in distress",tr:"Sıkıntı anı duası",ur:"پریشانی کی دعا",hi:"परेशानी की दुआ"},
+  "دعوة ذي النون":{en:"The supplication of Dhun-Nun (Yunus)",tr:"Zünnûn'un (Yûnus a.s.) duası",ur:"ذوالنون (یونس علیہ السلام) کی دعا",hi:"ज़ुन्नून (यूनुस अलैहिस्सलाम) की दुआ"},
   "آية الكرسي":{en:"Ayat al-Kursi",tr:"Âyetü'l-Kürsî",ur:"آیت الکرسی",hi:"आयतुल कुर्सी"},
   "سورة الإخلاص":{en:"Surah al-Ikhlas",tr:"İhlâs Suresi",ur:"سورۂ اخلاص",hi:"सूरह इख़लास"},
   "سورة الفلق":{en:"Surah al-Falaq",tr:"Felak Suresi",ur:"سورۂ فلق",hi:"सूरह फ़लक़"},
@@ -241,8 +248,8 @@ const f_TAHLIL100=F("It equals freeing ten slaves; a hundred good deeds are writ
 const f_SUBHAN=F("No one will come on the Day of Resurrection with anything better, except someone who said the same or more.","Kıyamet günü, onun kadar veya daha fazla söyleyen dışında hiç kimse ondan daha faziletli bir şeyle gelemez.","قیامت کے دن کوئی اس سے افضل عمل لے کر نہیں آئے گا، سوائے اس کے جس نے اتنا ہی یا اس سے زیادہ کہا ہو۔","क़यामत के दिन कोई इससे बेहतर अमल लेकर नहीं आएगा, सिवाय उसके जिसने इतना ही या इससे ज़्यादा कहा हो।");
 const f_SEA=F("His sins are wiped away even if they are like the foam of the sea.","Günahları deniz köpüğü kadar olsa bile silinir.","اس کے گناہ مٹا دیے جاتے ہیں چاہے سمندر کی جھاگ کے برابر ہوں۔","उसके गुनाह मिटा दिए जाते हैं चाहे समुद्र के झाग के बराबर हों।");
 
-/* ============ أذكار الصباح ============ */
-const MORNING=[
+/* ترجمات أذكار الصباح القديمة (مصدر للترجمة فقط) */
+const M_OLD=[
   {h:"آية الكرسي",x:AYAT_KURSI,n:1,q:["baqarah","255"],r:["hakim","nasai"],t:t_KURSI,
    f:"من قالها حين يصبح أُجير من الجن حتى يمسي، ومن قالها حين يمسي أُجير منهم حتى يصبح.",ft:f_KURSI_DAY},
   {h:"سورة الإخلاص",x:IKHLAS,n:3,r:["abudawud","tirmidhi"],t:t_IKHLAS,f:"من قرأ المعوذات ثلاثًا حين يمسي وحين يصبح كفته من كل شيء.",ft:f_THREE},
@@ -550,11 +557,143 @@ const RUQYAH=[
    f:"كان النبي ﷺ يعوّذ بها الحسن والحسين.",ft:F("The Prophet ﷺ used to seek protection with it for al-Hasan and al-Husayn.","Peygamber (s.a.v.) Hasan ve Hüseyin'i bununla Allah'a sığındırırdı.","نبی ﷺ حسن اور حسین کے لیے اسی سے پناہ مانگتے تھے۔","नबी ﷺ हसन और हुसैन के लिए इसी से पनाह मांगते थे।")}
 ];
 
+/* ربط ترجمات مشتركة بين الأقسام */
+TK.shirk=EVENING[22].t; TK.istighfarAzim=EVENING[24].t; TK.yarabb=EVENING[25].t; TK.tawakkalt=EVENING[26].t; TK.salatBarik=EVENING[28].t; TK.astaghfir=PRAYER[0].t;
+const f_GOOD=F("A good dhikr.","Güzel bir zikir.","ایک پاکیزہ ذکر۔","एक पाकीज़ा ज़िक्र।");
+
+/* ============ أذكار الصباح (من ملف أنس) ============ */
+const MORNING=[
+  {...M_OLD[0]},
+  {...M_OLD[1],f:"من قرأ سور الإخلاص والفلق والناس ثلاث مرات صباحًا ومساءً كفته من كل شيء."},
+  {...M_OLD[2]},
+  {...M_OLD[3]},
+  {...M_OLD[4]},
+  {...M_OLD[6],f:"من قالها موقنًا بها حين يمسي ومات من ليلته دخل الجنة، وكذلك حين يصبح."},
+  {...M_OLD[14],x:"رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نَبِيًّا",f:"من قالها ثلاث مرات حين يصبح وحين يمسي كان حقًّا على الله أن يرضيه يوم القيامة.",
+   ft:F("Whoever says it three times in the morning and evening, it is a right upon Allah to please him on the Day of Resurrection.","Sabah ve akşam üçer kez söyleyeni kıyamet günü razı etmek Allah üzerine hak olur.","جو صبح و شام تین تین بار کہے، اللہ پر حق ہے کہ قیامت کے دن اسے راضی کرے۔","जो सुबह और शाम तीन-तीन बार कहे, अल्लाह पर हक़ है कि क़यामत के दिन उसे राज़ी करे।")},
+  {...M_OLD[7],f:"ورد أن من قالها أربع مرات أعتقه الله من النار."},
+  {...M_OLD[8]},
+  {...M_OLD[10],f:"ورد عن أبي الدرداء أن من قالها سبع مرات صباحًا ومساءً كفاه الله ما أهمّه.",
+   ft:F("It is reported from Abu ad-Darda' that whoever says it seven times in the morning and evening, Allah will suffice him in what concerns him.","Ebü'd-Derdâ'dan rivayet edildiğine göre sabah ve akşam yedişer kez söyleyene Allah, onu kaygılandıran şeyde yeter.","ابو الدرداء سے مروی ہے کہ جو صبح و شام سات سات بار کہے اللہ اسے اس کی فکر میں کافی ہو جاتا ہے۔","अबू दरदा से रिवायत है कि जो सुबह और शाम सात-सात बार कहे अल्लाह उसकी फ़िक्र में उसे काफ़ी हो जाता है।")},
+  {...M_OLD[13],f:"من قالها ثلاث مرات صباحًا لم تصبه فجأة بلاء حتى يمسي، ومن قالها ثلاث مرات مساءً لم تصبه فجأة بلاء حتى يصبح.",
+   ft:F("Whoever says it three times in the morning will not be struck by sudden calamity until evening, and whoever says it three times in the evening will not be struck by sudden calamity until morning.","Sabah üç kez söyleyene akşama kadar, akşam üç kez söyleyene sabaha kadar ani bir bela isabet etmez.","جو صبح تین بار کہے اسے شام تک کوئی اچانک مصیبت نہیں پہنچتی، اور جو شام کو تین بار کہے اسے صبح تک کوئی اچانک مصیبت نہیں پہنچتی۔","जो सुबह तीन बार कहे उसे शाम तक कोई अचानक मुसीबत नहीं पहुंचती, और जो शाम को तीन बार कहे उसे सुबह तक कोई अचानक मुसीबत नहीं पहुंचती।")},
+  {...M_OLD[5]},
+  {...M_OLD[16]},
+  {...M_OLD[17]},
+  {x:"اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَٰهَ إِلَّا أَنْتَ",n:3,r:["abudawud"],key:"afini1"},
+  {x:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ، لَا إِلَٰهَ إِلَّا أَنْتَ",n:3,r:["abudawud"],key:"afini2"},
+  {...M_OLD[11]},
+  {...M_OLD[15],n:3},
+  {x:"أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَٰذَا الْيَوْمِ: فَتْحَهُ، وَنَصْرَهُ، وَنُورَهُ، وَبَرَكَتَهُ، وَهُدَاهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِ وَشَرِّ مَا بَعْدَهُ",n:1,r:["abudawud"],
+   t:T("Asbahnā wa asbaha l-mulku lillāhi rabbi l-'ālamīn. Allāhumma innī as'aluka khayra hādha l-yawm: fathahū wa nasrahū wa nūrahū wa barakatahū wa hudāh, wa a'ūdhu bika min sharri mā fīhi wa sharri mā ba'dah.",
+   "We have entered the morning, and all dominion belongs to Allah, Lord of the worlds. O Allah, I ask You for the good of this day: its openings, its victory, its light, its blessing and its guidance, and I seek refuge in You from the evil within it and the evil of what follows it.",
+   "Sabaha erdik, mülk de âlemlerin Rabbi Allah'ın olarak sabaha erdi. Allah'ım! Bu günün hayrını, fethini, zaferini, nurunu, bereketini ve hidayetini senden isterim; içindekinin şerrinden ve ondan sonrakinin şerrinden sana sığınırım.",
+   "ہم نے صبح کی اور ساری بادشاہی نے اللہ رب العالمین کے لیے صبح کی۔ اے اللہ! میں تجھ سے اس دن کی بھلائی مانگتا ہوں: اس کی کامیابی، اس کی نصرت، اس کا نور، اس کی برکت اور اس کی ہدایت، اور اس میں جو شر ہے اور اس کے بعد جو شر ہے اس سے تیری پناہ مانگتا ہوں۔",
+   "हमने सुबह की और सारी बादशाही ने अल्लाह रब्बुल आलमीन के लिए सुबह की। ऐ अल्लाह! मैं तुझसे इस दिन की भलाई मांगता हूँ: इसकी कामयाबी, इसकी मदद, इसका नूर, इसकी बरकत और इसकी हिदायत, और इसमें जो बुराई है और इसके बाद जो बुराई है उससे तेरी पनाह मांगता हूँ।")},
+  {...M_OLD[12]},
+  {x:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",n:3,r:["muslim"],key:"kalimat"},
+  {x:"اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ أَنْ نُشْرِكَ بِكَ شَيْئًا نَعْلَمُهُ، وَنَسْتَغْفِرُكَ لِمَا لَا نَعْلَمُهُ",n:3,r:["ahmad"],key:"shirk"},
+  {x:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْجُبْنِ وَالْبُخْلِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ",n:1,r:["bukhari"],
+   t:T("Allāhumma innī a'ūdhu bika mina l-hammi wa l-hazan, wa l-'ajzi wa l-kasal, wa l-jubni wa l-bukhl, wa dala'i d-dayni wa ghalabati r-rijāl.",
+   "O Allah, I seek refuge in You from worry and grief, from helplessness and laziness, from cowardice and miserliness, and from the burden of debt and being overpowered by people.",
+   "Allah'ım! Kaygıdan ve hüzünden, acizlikten ve tembellikten, korkaklıktan ve cimrilikten, borcun ağırlığından ve insanların baskısından sana sığınırım.",
+   "اے اللہ! میں فکر اور غم سے، عاجزی اور سستی سے، بزدلی اور کنجوسی سے، قرض کے بوجھ اور لوگوں کے غلبے سے تیری پناہ مانگتا ہوں۔",
+   "ऐ अल्लाह! मैं फ़िक्र और ग़म से, आजिज़ी और सुस्ती से, बुज़दिली और कंजूसी से, क़र्ज़ के बोझ और लोगों के ग़लबे से तेरी पनाह मांगता हूँ।")},
+  {x:"أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْحَيَّ الْقَيُّومَ، وَأَتُوبُ إِلَيْهِ",n:3,r:["abudawud","tirmidhi"],key:"istighfarAzim"},
+  {x:"يَا رَبِّ، لَكَ الْحَمْدُ كَمَا يَنْبَغِي لِجَلَالِ وَجْهِكَ، وَلِعَظِيمِ سُلْطَانِكَ",n:3,r:["ibnmajah"],key:"yarabb"},
+  {x:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا",n:1,r:["ibnmajah"],
+   t:T("Allāhumma innī as'aluka 'ilman nāfi'ā, wa rizqan tayyibā, wa 'amalan mutaqabbalā.",
+   "O Allah, I ask You for beneficial knowledge, good and lawful provision, and deeds that are accepted.",
+   "Allah'ım! Senden faydalı ilim, helal ve temiz rızık ve kabul edilmiş amel isterim.",
+   "اے اللہ! میں تجھ سے نفع دینے والا علم، پاکیزہ رزق اور قبول ہونے والا عمل مانگتا ہوں۔",
+   "ऐ अल्लाह! मैं तुझसे फ़ायदा देने वाला इल्म, पाकीज़ा रोज़ी और क़बूल होने वाला अमल मांगता हूँ।")},
+  {x:"اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَٰهَ إِلَّا أَنْتَ، عَلَيْكَ تَوَكَّلْتُ، وَأَنْتَ رَبُّ الْعَرْشِ الْعَظِيمِ، مَا شَاءَ اللَّهُ كَانَ، وَمَا لَمْ يَشَأْ لَمْ يَكُنْ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ، أَعْلَمُ أَنَّ اللَّهَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ، وَأَنَّ اللَّهَ قَدْ أَحَاطَ بِكُلِّ شَيْءٍ عِلْمًا، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ كُلِّ دَابَّةٍ أَنْتَ آخِذٌ بِنَاصِيَتِهَا، إِنَّ رَبِّي عَلَىٰ صِرَاطٍ مُسْتَقِيمٍ",n:1,key:"tawakkalt",f:"ذِكْرٌ طيّب.",ft:f_GOOD},
+  {x:"اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ نَبِيِّنَا مُحَمَّدٍ",n:10,r:["tabarani"],key:"salatBarik",f:"ورد في حديث مختلف في ثبوته أن من صلّى على النبي ﷺ عشرًا صباحًا وعشرًا مساءً نال شفاعته يوم القيامة.",
+   ft:F("It is reported, in a hadith whose authenticity is disputed, that whoever sends blessings upon the Prophet ﷺ ten times in the morning and ten times in the evening will receive his intercession on the Day of Resurrection.","Sıhhati tartışmalı bir hadiste, Peygamber'e (s.a.v.) sabah on, akşam on kez salavat getirenin kıyamet günü onun şefaatine ereceği rivayet edilmiştir.","ایک ایسی حدیث میں، جس کی صحت میں اختلاف ہے، آیا ہے کہ جو نبی ﷺ پر صبح دس بار اور شام دس بار درود بھیجے اسے قیامت کے دن آپ کی شفاعت نصیب ہوگی۔","एक ऐसी हदीस में, जिसके सही होने में इख़्तिलाफ़ है, आया है कि जो नबी ﷺ पर सुबह दस बार और शाम दस बार दुरूद भेजे उसे क़यामत के दिन आपकी शफ़ाअत नसीब होगी।")},
+  {x:TAHLIL,n:100,r:["bukhari","muslim"],t:t_TAHLIL,f:"من قالها مئة مرة في يوم كانت له عدل عشر رقاب، وكُتبت له مئة حسنة، ومُحيت عنه مئة سيئة، وكانت له حِرزًا من الشيطان يومه ذلك حتى يمسي.",
+   ft:F("Whoever says it a hundred times in a day: it equals freeing ten slaves, a hundred good deeds are written for him, a hundred bad deeds are erased, and it is a protection for him from Satan that day until evening.","Bir günde yüz kez söyleyene: on köle azat etmeye denk olur, ona yüz sevap yazılır, yüz günahı silinir ve o gün akşama kadar şeytana karşı korunur.","جو اسے دن میں سو بار کہے: یہ دس غلام آزاد کرنے کے برابر ہے، اس کے لیے سو نیکیاں لکھی جاتی ہیں، سو گناہ مٹا دیے جاتے ہیں اور یہ اس دن شام تک شیطان سے اس کا بچاؤ بن جاتا ہے۔","जो इसे दिन में सौ बार कहे: यह दस ग़ुलाम आज़ाद करने के बराबर है, उसके लिए सौ नेकियां लिखी जाती हैं, सौ गुनाह मिटा दिए जाते हैं और यह उस दिन शाम तक शैतान से उसका बचाव बन जाता है।")},
+  {x:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",n:100,r:["bukhari","muslim"],key:"subhan",f:"من قالها مئة مرة في يوم حُطّت خطاياه وإن كانت مثل زبد البحر. ومن قالها مئة مرة حين يصبح وحين يمسي لم يأتِ أحد يوم القيامة بأفضل مما جاء به إلا أحد قال مثل ما قال أو زاد عليه.",
+   ft:F("Whoever says it a hundred times in a day, his sins are wiped away even if they are like the foam of the sea. And whoever says it a hundred times in the morning and evening, no one will come on the Day of Resurrection with anything better, except someone who said the same or more.","Bir günde yüz kez söyleyenin günahları deniz köpüğü kadar olsa bile silinir. Sabah ve akşam yüzer kez söyleyen ise kıyamet günü, onun kadar veya daha fazla söyleyen dışında herkesten daha faziletli bir şeyle gelir.","جو اسے دن میں سو بار کہے اس کے گناہ مٹا دیے جاتے ہیں چاہے سمندر کی جھاگ کے برابر ہوں۔ اور جو صبح و شام سو سو بار کہے، قیامت کے دن کوئی اس سے افضل عمل لے کر نہیں آئے گا سوائے اس کے جس نے اتنا ہی یا اس سے زیادہ کہا ہو۔","जो इसे दिन में सौ बार कहे उसके गुनाह मिटा दिए जाते हैं चाहे समुद्र के झाग के बराबर हों। और जो सुबह और शाम सौ-सौ बार कहे, क़यामत के दिन कोई इससे बेहतर अमल लेकर नहीं आएगा सिवाय उसके जिसने इतना ही या इससे ज़्यादा कहा हो।")},
+  {...M_OLD[21],r:["bukhari"],f:"كان النبي ﷺ يستغفر الله ويتوب إليه أكثر من سبعين مرة في اليوم. (البخاري 6307)",
+   ft:F("The Prophet ﷺ used to seek Allah's forgiveness and repent to Him more than seventy times a day. (al-Bukhari 6307)","Peygamber (s.a.v.) günde yetmiş defadan fazla Allah'tan bağışlanma diler ve O'na tövbe ederdi. (Buhârî 6307)","نبی ﷺ دن میں ستر سے زیادہ مرتبہ اللہ سے بخشش مانگتے اور اس کی طرف توبہ کرتے تھے۔ (بخاری 6307)","नबी ﷺ दिन में सत्तर से ज़्यादा बार अल्लाह से माफ़ी मांगते और उसकी तरफ़ तौबा करते थे। (बुख़ारी 6307)")}
+];
+
+/* ============ أذكار في أي وقت ============ */
+const DHIKR=[
+  {x:"أَسْتَغْفِرُ اللَّهَ",n:100,r:["muslim"],key:"astaghfir",f:"قال النبي ﷺ: إني لأستغفر الله في اليوم مئة مرة.",
+   ft:F("The Prophet ﷺ said: I seek Allah's forgiveness a hundred times a day.","Peygamber (s.a.v.): 'Ben günde yüz kez Allah'tan bağışlanma dilerim' buyurdu.","نبی ﷺ نے فرمایا: میں دن میں سو مرتبہ اللہ سے بخشش مانگتا ہوں۔","नबी ﷺ ने फ़रमाया: मैं दिन में सौ बार अल्लाह से माफ़ी मांगता हूँ।")},
+  {x:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",n:100,r:["bukhari","muslim"],
+   t:T("Subhāna llāhi wa bi-hamdih, subhāna llāhi l-'azīm.","Glory and praise be to Allah; glory be to Allah, the Almighty.","Allah'ı hamdiyle tesbih ederim; yüce Allah'ı tesbih ederim.","اللہ پاک ہے اپنی حمد کے ساتھ، عظمت والا اللہ پاک ہے۔","अल्लाह पाक है अपनी तारीफ़ के साथ, अज़मत वाला अल्लाह पाक है।"),
+   f:"كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن.",
+   ft:F("Two phrases that are light on the tongue, heavy on the scale, and beloved to the Most Merciful.","Dile hafif, mizanda ağır, Rahmân'a sevimli iki kelime.","دو کلمے جو زبان پر ہلکے، میزان میں بھاری اور رحمٰن کو محبوب ہیں۔","दो कलिमे जो ज़बान पर हल्के, तराज़ू में भारी और रहमान को प्यारे हैं।")},
+  {x:"لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",n:100,r:["bukhari","muslim"],
+   t:T("Lā hawla wa lā quwwata illā billāh.","There is no power and no strength except with Allah.","Güç ve kuvvet ancak Allah'ındır.","اللہ کے سوا نہ کوئی طاقت ہے نہ قوت۔","अल्लाह के सिवा न कोई ताक़त है न क़ुव्वत।"),
+   f:"كنز من كنوز الجنة.",ft:F("It is one of the treasures of Paradise.","Cennet hazinelerinden bir hazinedir.","یہ جنت کے خزانوں میں سے ایک خزانہ ہے۔","यह जन्नत के ख़ज़ानों में से एक ख़ज़ाना है।")}
+];
+
+/* ============ أدعية الثناء على الله ============ */
+const f_RUKU=F("The Prophet ﷺ used to say it in his bowing and prostration.","Peygamber (s.a.v.) bunu rükû ve secdesinde söylerdi.","نبی ﷺ اسے رکوع اور سجدے میں پڑھتے تھے۔","नबी ﷺ इसे रुकू और सज्दे में पढ़ते थे।");
+const THANA=[
+  {h:"دعاء الاستفتاح",x:"سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَىٰ جَدُّكَ، وَلَا إِلَٰهَ غَيْرُكَ",n:1,r:["abudawud","tirmidhi"],
+   t:T("Subhānaka llāhumma wa bi-hamdik, wa tabāraka smuk, wa ta'ālā jadduk, wa lā ilāha ghayruk.","Glory and praise be to You, O Allah. Blessed is Your name and exalted is Your majesty, and there is no god besides You.","Allah'ım! Seni hamdinle tesbih ederim. Adın mübarektir, şanın yücedir, senden başka ilah yoktur.","اے اللہ! تو پاک ہے اپنی حمد کے ساتھ، تیرا نام بابرکت ہے، تیری شان بلند ہے اور تیرے سوا کوئی معبود نہیں۔","ऐ अल्लाह! तू पाक है अपनी तारीफ़ के साथ, तेरा नाम बरकत वाला है, तेरी शान बुलंद है और तेरे सिवा कोई माबूद नहीं।")},
+  {x:"اللَّهُمَّ رَبَّنَا لَكَ الْحَمْدُ، مِلْءَ السَّمَاوَاتِ وَمِلْءَ الْأَرْضِ، وَمِلْءَ مَا شِئْتَ مِنْ شَيْءٍ بَعْدُ، أَهْلَ الثَّنَاءِ وَالْمَجْدِ، أَحَقُّ مَا قَالَ الْعَبْدُ، وَكُلُّنَا لَكَ عَبْدٌ، اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ، وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",n:1,r:["muslim"],
+   t:T("Allāhumma rabbanā laka l-hamd, mil'a s-samāwāti wa mil'a l-ard, wa mil'a mā shi'ta min shay'in ba'd, ahla th-thanā'i wa l-majd, ahaqqu mā qāla l-'abd, wa kullunā laka 'abd. Allāhumma lā māni'a limā a'tayt, wa lā mu'tiya limā mana't, wa lā yanfa'u dha l-jaddi minka l-jadd.",
+   "O Allah, our Lord, to You belongs praise filling the heavens, filling the earth, and filling whatever else You will. You are worthy of all praise and glory; this is the truest thing a servant has said, and we are all Your servants. O Allah, none can withhold what You give, none can give what You withhold, and the wealth of the wealthy cannot avail him against You.",
+   "Allah'ım, Rabbimiz! Gökleri, yeri ve bundan sonra dilediğin her şeyi dolduracak kadar hamd sanadır. Övgüye ve yüceliğe layık olan sensin. Kulun söylediği en doğru söz budur ve hepimiz senin kullarınız. Allah'ım! Senin verdiğine engel olacak, engel olduğunu verecek kimse yoktur. Zenginlik sahibine zenginliği senin katında fayda vermez.",
+   "اے اللہ، ہمارے رب! تیرے لیے اتنی تعریف ہے جس سے آسمان بھر جائیں، زمین بھر جائے اور اس کے بعد جو تو چاہے وہ بھر جائے۔ تو ہی ثنا اور بزرگی کے لائق ہے، یہ سب سے سچی بات ہے جو بندے نے کہی، اور ہم سب تیرے ہی بندے ہیں۔ اے اللہ! جو تو دے اسے کوئی روکنے والا نہیں، اور جو تو روک لے اسے کوئی دینے والا نہیں، اور کسی دولت مند کو اس کی دولت تیرے مقابلے میں کام نہیں آتی۔",
+   "ऐ अल्लाह, हमारे रब! तेरे लिए इतनी तारीफ़ है जिससे आसमान भर जाएं, ज़मीन भर जाए और इसके बाद जो तू चाहे वह भर जाए। तू ही तारीफ़ और बुज़ुर्गी के लायक़ है, यह सबसे सच्ची बात है जो बंदे ने कही, और हम सब तेरे ही बंदे हैं। ऐ अल्लाह! जो तू दे उसे कोई रोकने वाला नहीं, और जो तू रोक ले उसे कोई देने वाला नहीं, और किसी दौलतमंद को उसकी दौलत तेरे मुक़ाबले में काम नहीं आती।")},
+  {h:"من دعاء النبي ﷺ في قيام الليل",x:"اللَّهُمَّ لَكَ الْحَمْدُ، أَنْتَ قَيِّمُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ، لَكَ مُلْكُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ، أَنْتَ نُورُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ، أَنْتَ الْحَقُّ، وَوَعْدُكَ الْحَقُّ، وَلِقَاؤُكَ حَقٌّ، وَقَوْلُكَ حَقٌّ، وَالْجَنَّةُ حَقٌّ، وَالنَّارُ حَقٌّ، وَالنَّبِيُّونَ حَقٌّ، وَمُحَمَّدٌ ﷺ حَقٌّ، وَالسَّاعَةُ حَقٌّ",n:1,r:["bukhari","muslim"],
+   t:T("Allāhumma laka l-hamd, anta qayyimu s-samāwāti wa l-ardi wa man fīhinn, wa laka l-hamd, laka mulku s-samāwāti wa l-ardi wa man fīhinn, wa laka l-hamd, anta nūru s-samāwāti wa l-ardi wa man fīhinn, wa laka l-hamd, anta l-haqq, wa wa'duka l-haqq, wa liqā'uka haqq, wa qawluka haqq, wa l-jannatu haqq, wa n-nāru haqq, wa n-nabiyyūna haqq, wa Muhammadun sallā llāhu 'alayhi wa sallama haqq, wa s-sā'atu haqq.",
+   "O Allah, to You belongs all praise. You are the Sustainer of the heavens and the earth and all within them. To You belongs all praise; Yours is the dominion of the heavens and the earth and all within them. To You belongs all praise; You are the Light of the heavens and the earth and all within them. To You belongs all praise. You are the Truth, Your promise is true, the meeting with You is true, Your word is true, Paradise is true, the Fire is true, the prophets are true, Muhammad ﷺ is true, and the Hour is true.",
+   "Allah'ım! Hamd sanadır; göklerin, yerin ve içindekilerin ayakta tutanı sensin. Hamd sanadır; göklerin, yerin ve içindekilerin mülkü senindir. Hamd sanadır; göklerin, yerin ve içindekilerin nuru sensin. Hamd sanadır. Sen haksın, vaadin haktır, sana kavuşmak haktır, sözün haktır, cennet haktır, cehennem haktır, peygamberler haktır, Muhammed (s.a.v.) haktır, kıyamet haktır.",
+   "اے اللہ! تیرے ہی لیے تعریف ہے، تو آسمانوں، زمین اور ان میں موجود سب کو قائم رکھنے والا ہے۔ تیرے ہی لیے تعریف ہے، آسمانوں، زمین اور ان میں موجود سب کی بادشاہی تیری ہے۔ تیرے ہی لیے تعریف ہے، تو آسمانوں، زمین اور ان میں موجود سب کا نور ہے۔ تیرے ہی لیے تعریف ہے۔ تو حق ہے، تیرا وعدہ حق ہے، تجھ سے ملاقات حق ہے، تیری بات حق ہے، جنت حق ہے، جہنم حق ہے، انبیاء حق ہیں، محمد ﷺ حق ہیں اور قیامت حق ہے۔",
+   "ऐ अल्लाह! तेरे ही लिए तारीफ़ है, तू आसमानों, ज़मीन और उनमें मौजूद सबको क़ायम रखने वाला है। तेरे ही लिए तारीफ़ है, आसमानों, ज़मीन और उनमें मौजूद सबकी बादशाही तेरी है। तेरे ही लिए तारीफ़ है, तू आसमानों, ज़मीन और उनमें मौजूद सबका नूर है। तेरे ही लिए तारीफ़ है। तू हक़ है, तेरा वादा हक़ है, तुझसे मुलाक़ात हक़ है, तेरी बात हक़ है, जन्नत हक़ है, जहन्नम हक़ है, नबी हक़ हैं, मुहम्मद ﷺ हक़ हैं और क़यामत हक़ है।")},
+  {x:"اللَّهُمَّ أَنْتَ الْأَوَّلُ فَلَيْسَ قَبْلَكَ شَيْءٌ، وَأَنْتَ الْآخِرُ فَلَيْسَ بَعْدَكَ شَيْءٌ، وَأَنْتَ الظَّاهِرُ فَلَيْسَ فَوْقَكَ شَيْءٌ، وَأَنْتَ الْبَاطِنُ فَلَيْسَ دُونَكَ شَيْءٌ، اقْضِ عَنَّا الدَّيْنَ، وَأَغْنِنَا مِنَ الْفَقْرِ",n:1,r:["muslim"],
+   t:T("Allāhumma anta l-awwalu fa-laysa qablaka shay', wa anta l-ākhiru fa-laysa ba'daka shay', wa anta z-zāhiru fa-laysa fawqaka shay', wa anta l-bātinu fa-laysa dūnaka shay', iqdi 'anna d-dayna wa aghninā mina l-faqr.",
+   "O Allah, You are the First, and there is nothing before You; You are the Last, and there is nothing after You; You are the Most High, and there is nothing above You; You are the Most Near, and there is nothing beyond You. Settle our debts for us and free us from poverty.",
+   "Allah'ım! Sen Evvel'sin, senden önce hiçbir şey yoktur. Sen Âhir'sin, senden sonra hiçbir şey yoktur. Sen Zâhir'sin, senin üstünde hiçbir şey yoktur. Sen Bâtın'sın, senden öte hiçbir şey yoktur. Borcumuzu öde, bizi fakirlikten kurtarıp zengin kıl.",
+   "اے اللہ! تو ہی اول ہے، تجھ سے پہلے کچھ نہیں؛ تو ہی آخر ہے، تیرے بعد کچھ نہیں؛ تو ہی ظاہر ہے، تیرے اوپر کچھ نہیں؛ تو ہی باطن ہے، تجھ سے ورے کچھ نہیں۔ ہمارا قرض ادا فرما دے اور ہمیں فقر سے بے نیاز کر دے۔",
+   "ऐ अल्लाह! तू ही अव्वल है, तुझसे पहले कुछ नहीं; तू ही आख़िर है, तेरे बाद कुछ नहीं; तू ही ज़ाहिर है, तेरे ऊपर कुछ नहीं; तू ही बातिन है, तुझसे छुपा कुछ नहीं। हमारा क़र्ज़ अदा फ़रमा दे और हमें ग़रीबी से बेनियाज़ कर दे।")},
+  {h:"دعاء الكرب",x:"لَا إِلَٰهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَٰهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَٰهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ",n:1,r:["bukhari","muslim"],
+   t:T("Lā ilāha illa llāhu l-'azīmu l-halīm, lā ilāha illa llāhu rabbu l-'arshi l-'azīm, lā ilāha illa llāhu rabbu s-samāwāti wa rabbu l-ardi wa rabbu l-'arshi l-karīm.",
+   "There is no god but Allah, the Almighty, the Forbearing. There is no god but Allah, Lord of the Mighty Throne. There is no god but Allah, Lord of the heavens, Lord of the earth, and Lord of the Noble Throne.",
+   "Azîm ve Halîm olan Allah'tan başka ilah yoktur. Büyük Arş'ın Rabbi Allah'tan başka ilah yoktur. Göklerin Rabbi, yerin Rabbi ve şerefli Arş'ın Rabbi Allah'tan başka ilah yoktur.",
+   "عظمت والے، بردبار اللہ کے سوا کوئی معبود نہیں۔ عرشِ عظیم کے رب اللہ کے سوا کوئی معبود نہیں۔ آسمانوں کے رب، زمین کے رب اور عرشِ کریم کے رب اللہ کے سوا کوئی معبود نہیں۔",
+   "अज़मत वाले, बुर्दबार अल्लाह के सिवा कोई माबूद नहीं। अर्शे अज़ीम के रब अल्लाह के सिवा कोई माबूद नहीं। आसमानों के रब, ज़मीन के रब और अर्शे करीम के रब अल्लाह के सिवा कोई माबूद नहीं।"),
+   f:"كان النبي ﷺ يقولها عند الكرب.",ft:F("The Prophet ﷺ used to say it in times of distress.","Peygamber (s.a.v.) sıkıntı anında bunu söylerdi.","نبی ﷺ پریشانی کے وقت یہ کلمات کہتے تھے۔","नबी ﷺ परेशानी के वक़्त यह कलिमात कहते थे।")},
+  {x:"اللَّهُمَّ إِنِّي أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ، وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ، وَأَعُوذُ بِكَ مِنْكَ، لَا أُحْصِي ثَنَاءً عَلَيْكَ، أَنْتَ كَمَا أَثْنَيْتَ عَلَىٰ نَفْسِكَ",n:1,r:["muslim"],
+   t:T("Allāhumma innī a'ūdhu bi-ridāka min sakhatik, wa bi-mu'āfātika min 'uqūbatik, wa a'ūdhu bika mink, lā uhsī thanā'an 'alayk, anta kamā athnayta 'alā nafsik.",
+   "O Allah, I seek refuge in Your pleasure from Your anger, in Your pardon from Your punishment, and I seek refuge in You from You. I cannot count Your praises; You are as You have praised Yourself.",
+   "Allah'ım! Gazabından rızana, cezandan affına sığınırım. Senden yine sana sığınırım. Seni övmeyi sayıp bitiremem; sen kendini övdüğün gibisin.",
+   "اے اللہ! میں تیری ناراضی سے تیری رضا کی پناہ مانگتا ہوں، تیری سزا سے تیری معافی کی پناہ مانگتا ہوں، اور تجھ سے تیری ہی پناہ مانگتا ہوں۔ میں تیری تعریف کا شمار نہیں کر سکتا، تو ویسا ہی ہے جیسی تو نے اپنی تعریف خود کی ہے۔",
+   "ऐ अल्लाह! मैं तेरी नाराज़गी से तेरी रज़ा की पनाह मांगता हूँ, तेरी सज़ा से तेरी माफ़ी की पनाह मांगता हूँ, और तुझसे तेरी ही पनाह मांगता हूँ। मैं तेरी तारीफ़ गिन नहीं सकता, तू वैसा ही है जैसी तूने ख़ुद अपनी तारीफ़ की है।")},
+  {x:"سُبُّوحٌ قُدُّوسٌ، رَبُّ الْمَلَائِكَةِ وَالرُّوحِ",n:1,r:["muslim"],
+   t:T("Subbūhun quddūs, rabbu l-malā'ikati wa r-rūh.","Perfect and Holy, Lord of the angels and the Spirit (Jibril).","Her eksiklikten münezzeh ve mukaddestir; meleklerin ve Ruh'un (Cebrâil'in) Rabbidir.","نہایت پاک، نہایت مقدس، فرشتوں اور روح (جبریل) کا رب۔","बहुत पाक, बहुत मुक़द्दस, फ़रिश्तों और रूह (जिब्रील) का रब।"),
+   f:"كان النبي ﷺ يقولها في ركوعه وسجوده.",ft:f_RUKU},
+  {x:"سُبْحَانَ ذِي الْجَبَرُوتِ وَالْمَلَكُوتِ وَالْكِبْرِيَاءِ وَالْعَظَمَةِ",n:1,r:["abudawud","nasai"],
+   t:T("Subhāna dhi l-jabarūti wa l-malakūti wa l-kibriyā'i wa l-'azamah.","Glory be to the Possessor of might, dominion, grandeur and majesty.","Ceberût, melekût, kibriyâ ve azamet sahibi Allah'ı tesbih ederim.","پاک ہے وہ ذات جو غلبے، بادشاہی، بڑائی اور عظمت والی ہے۔","पाक है वह ज़ात जो ग़लबे, बादशाही, बड़ाई और अज़मत वाली है।"),
+   f:"كان النبي ﷺ يقولها في ركوعه وسجوده.",ft:f_RUKU},
+  {x:"اللَّهُ أَكْبَرُ كَبِيرًا، وَالْحَمْدُ لِلَّهِ كَثِيرًا، وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلًا",n:1,r:["muslim"],
+   t:T("Allāhu akbaru kabīrā, wa l-hamdu lillāhi kathīrā, wa subhāna llāhi bukratan wa asīlā.","Allah is the Greatest, truly great; much praise is for Allah; and glory be to Allah morning and evening.","Allah en büyüktür, gerçekten büyüktür. Allah'a çokça hamd olsun. Sabah akşam Allah'ı tesbih ederim.","اللہ سب سے بڑا ہے بہت بڑا، اللہ کے لیے بہت زیادہ تعریف ہے، اور صبح و شام اللہ پاک ہے۔","अल्लाह सबसे बड़ा है बहुत बड़ा, अल्लाह के लिए बहुत ज़्यादा तारीफ़ है, और सुबह शाम अल्लाह पाक है।"),
+   f:"قال النبي ﷺ: عجبتُ لها، فُتحت لها أبواب السماء.",ft:F("The Prophet ﷺ said: I was amazed by it; the gates of heaven were opened for it.","Peygamber (s.a.v.): 'Buna hayret ettim, onun için göğün kapıları açıldı' buyurdu.","نبی ﷺ نے فرمایا: مجھے اس پر تعجب ہوا، اس کے لیے آسمان کے دروازے کھول دیے گئے۔","नबी ﷺ ने फ़रमाया: मुझे इस पर ताज्जुब हुआ, इसके लिए आसमान के दरवाज़े खोल दिए गए।")},
+  {x:"سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَٰهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ",n:1,r:["muslim"],
+   t:T("Subhāna llāh, wa l-hamdu lillāh, wa lā ilāha illa llāh, wa llāhu akbar.","Glory be to Allah, praise be to Allah, there is no god but Allah, and Allah is the Greatest.","Allah'ı tesbih ederim, hamd Allah'adır, Allah'tan başka ilah yoktur, Allah en büyüktür.","اللہ پاک ہے، سب تعریف اللہ کے لیے ہے، اللہ کے سوا کوئی معبود نہیں، اور اللہ سب سے بڑا ہے۔","अल्लाह पाक है, सब तारीफ़ अल्लाह के लिए है, अल्लाह के सिवा कोई माबूद नहीं, और अल्लाह सबसे बड़ा है।"),
+   f:"هنّ أحبّ الكلام إلى الله.",ft:F("These are the most beloved words to Allah.","Bunlar Allah'a en sevimli sözlerdir.","یہ اللہ کے نزدیک سب سے محبوب کلمات ہیں۔","ये अल्लाह के नज़दीक सबसे प्यारे कलिमात हैं।")},
+  {h:"دعوة ذي النون",x:"لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",n:1,q:["anbiya","87"],r:["tirmidhi"],
+   t:T("Lā ilāha illā anta subhānaka innī kuntu mina z-zālimīn.","There is no god but You; glory be to You. Indeed, I have been among the wrongdoers.","Senden başka ilah yoktur. Seni tesbih ederim. Gerçekten ben zalimlerden oldum.","تیرے سوا کوئی معبود نہیں، تو پاک ہے، بے شک میں ہی ظالموں میں سے تھا۔","तेरे सिवा कोई माबूद नहीं, तू पाक है, बेशक मैं ही ज़ालिमों में से था।"),
+   f:"لم يدعُ بها رجل مسلم في شيء قط إلا استجاب الله له.",ft:F("No Muslim ever calls upon Allah with it for anything except that Allah answers him.","Hangi Müslüman bir şey için bununla dua ederse Allah ona icabet eder.","جو مسلمان بھی کسی معاملے میں اس کے ساتھ دعا کرے اللہ اس کی دعا قبول فرماتا ہے۔","जो मुसलमान भी किसी मामले में इसके साथ दुआ करे अल्लाह उसकी दुआ क़बूल फ़रमाता है।")},
+  {x:"الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ",n:1,r:["muslim"],
+   t:T("Al-hamdu lillāhi hamdan kathīran tayyiban mubārakan fīh.","Praise be to Allah, abundant, good and blessed praise.","Çok, temiz ve bereketli bir hamd ile hamd Allah'adır.","تمام تعریف اللہ کے لیے ہے، بہت زیادہ، پاکیزہ اور بابرکت تعریف۔","सब तारीफ़ अल्लाह के लिए है, बहुत ज़्यादा, पाकीज़ा और बरकत वाली तारीफ़।"),
+   f:"قال النبي ﷺ: لقد رأيت اثني عشر ملكًا يبتدرونها أيّهم يرفعها.",ft:F("The Prophet ﷺ said: I saw twelve angels racing to be the one to raise it up.","Peygamber (s.a.v.): 'On iki meleğin, hangisinin onu yukarı çıkaracağı için yarıştığını gördüm' buyurdu.","نبی ﷺ نے فرمایا: میں نے بارہ فرشتوں کو دیکھا جو ایک دوسرے سے آگے بڑھ رہے تھے کہ کون اسے اوپر لے جائے۔","नबी ﷺ ने फ़रमाया: मैंने बारह फ़रिश्तों को देखा जो एक-दूसरे से आगे बढ़ रहे थे कि कौन इसे ऊपर ले जाए।")}
+];
+
 const SECTIONS=[
   {id:"morning",daily:true,items:MORNING},
   {id:"evening",daily:true,items:EVENING},
   {id:"sleep",daily:true,items:SLEEP},
   {id:"prayer",daily:false,items:PRAYER},
+  {id:"dhikr",daily:true,items:DHIKR},
+  {id:"thana",daily:false,items:THANA},
   {id:"ruqyah",daily:false,items:RUQYAH}
 ];
 
@@ -569,7 +708,7 @@ function toTurkish(s){
 /* ============ الحالة والتخزين ============ */
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const todayKey=()=>{const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()};
-let progress=store.get("adhkar.progress.v2",{});
+let progress=store.get("adhkar.progress.v3",{});
 let fs=store.get("adhkar.fs",1.5);
 let lang=store.get("adhkar.lang",null);
 if(!UI[lang]){const n=(navigator.language||"ar").slice(0,2).toLowerCase();lang=UI[n]?n:"ar"}
@@ -584,7 +723,7 @@ function secState(sec){
   if(!p||(sec.daily&&p.day!==todayKey())){p={day:todayKey(),c:{}};progress[sec.id]=p}
   return p;
 }
-function save(){store.set("adhkar.progress.v2",progress)}
+function save(){store.set("adhkar.progress.v3",progress)}
 function defaultSection(){
   const h=new Date().getHours();
   if(h>=3&&h<12) return "morning";
@@ -632,6 +771,9 @@ function render(){
   const id=(location.hash||"").slice(1);
   cur=SECTIONS.find(s=>s.id===id)||SECTIONS.find(s=>s.id===defaultSection());
   SECTIONS.forEach(s=>document.getElementById("tab-"+s.id).setAttribute("aria-selected",s===cur));
+  try{const tb=document.getElementById("tab-"+cur.id),tl=document.getElementById("tabs");
+    const d=tb.getBoundingClientRect(),w=tl.getBoundingClientRect();
+    tl.scrollLeft+=(d.left+d.width/2)-(w.left+w.width/2);}catch(e){}
   document.getElementById("sec-title").textContent=SEC_UI[cur.id][lang][1];
   document.getElementById("sec-hint").textContent=SEC_UI[cur.id][lang][2];
   const list=document.getElementById("list");list.innerHTML="";
