@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1D5E50">
-<meta name="description" content="أذكار الصباح والمساء والنوم وبعد الصلاة، وأذكار في أي وقت، وأدعية الثناء على الله، والرقية الشرعية، بخمس لغات.">
+<meta name="description" content="أذكار الصباح والمساء والنوم وبعد الصلاة، وأدعية الثناء، والرقية الشرعية، وعدّاد أشواط العمرة، بخمس لغات.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -86,6 +86,41 @@ html[lang="ur"] .meta details p{font-family:var(--f-urdu);line-height:2.2}
 button:focus-visible,.tab:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
 .finish{text-align:center;padding:26px 16px;color:var(--pine);font-size:1.15rem}
 .note{color:var(--muted);font-size:.82rem;margin-top:26px;text-align:center}
+/* عدّاد العمرة */
+.umrah{display:flex;flex-direction:column;align-items:center;gap:16px}
+.seg{display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;width:100%;max-width:380px}
+.seg button{flex:1;font:600 1rem var(--f-ui);border:none;border-radius:999px;padding:10px 12px;background:none;color:var(--ink);cursor:pointer}
+.seg button small{font-weight:500;opacity:.75;margin-inline-start:4px;font-variant-numeric:tabular-nums}
+.seg button[aria-selected="true"]{background:var(--pine);color:var(--surface)}
+.u-next{margin:0;color:var(--muted);text-align:center;font-size:.95rem;max-width:420px}
+.u-next span{color:var(--ink);font-weight:600}
+.u-big{width:min(76vw,300px);max-width:100%;aspect-ratio:1;border-radius:50%;border:none;background:var(--pine);color:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;box-shadow:0 0 0 10px var(--pine-soft);-webkit-tap-highlight-color:transparent;transition:transform .12s,opacity .2s;touch-action:manipulation}
+.u-big:active{transform:scale(.97)}
+.u-big.locked{opacity:.7}
+.u-big.is-done{background:var(--brass);cursor:default}
+.u-num{font:700 5.5rem/1 var(--f-latin);font-variant-numeric:tabular-nums}
+html[lang="ar"] .u-num,html[lang="ur"] .u-num{font-family:var(--f-ui)}
+.u-of{font-size:1rem;opacity:.85}
+.u-lab{font-size:.9rem;opacity:.92;margin-top:8px;max-width:78%;text-align:center;line-height:1.4}
+.u-beads{display:flex;gap:10px}
+.u-beads i{width:14px;height:14px;border-radius:50%;background:var(--line);display:block}
+.u-beads i.on{background:var(--brass)}
+.u-undo{font:500 .9rem var(--f-ui);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer}
+.u-undo:disabled{opacity:.45;cursor:default}
+.u-done{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;max-width:420px}
+.u-done strong{color:var(--pine);font-size:1.1rem}
+.u-done p{margin:6px 0 0}
+.u-go{margin-top:10px;font:600 1rem var(--f-ui);background:var(--pine);color:var(--surface);border:none;border-radius:999px;padding:10px 22px;cursor:pointer}
+.u-log{list-style:none;margin:0;padding:0;width:100%;max-width:420px;display:flex;flex-direction:column}
+.u-log li{display:flex;justify-content:space-between;gap:12px;padding:7px 12px;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums;color:var(--muted)}
+.u-log li.empty{justify-content:center;border:none}
+.u-guide{width:100%;max-width:560px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.u-guide summary{cursor:pointer;color:var(--pine);font-weight:600}
+.u-guide .g{margin-top:14px}
+.g-ar{font-family:var(--f-text);font-size:1.3rem;line-height:1.9;margin:4px 0 0;text-align:right}
+.g-mean{margin:4px 0 0;opacity:.88}
+html[lang="ur"] .g-mean{font-family:var(--f-urdu);line-height:2.2}
+html[lang="hi"] .g-mean{font-family:var(--f-hindi)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 
@@ -144,6 +179,7 @@ const SEC_UI={
   prayer:{ar:["بعد الصلاة","أذكار بعد الصلاة","بعد السلام من الصلاة المفروضة"],en:["After Prayer","After the Prayer","After the salam of each obligatory prayer"],tr:["Namazdan Sonra","Namaz Sonrası Zikirler","Farz namazlarda selam verdikten sonra"],ur:["نماز کے بعد","نماز کے بعد کے اذکار","فرض نماز کا سلام پھیرنے کے بعد"],hi:["नमाज़ के बाद", "नमाज़ के बाद के अज़कार", "फ़र्ज़ नमाज़ का सलाम फेरने के बाद"]},
   dhikr:{ar:["أذكار","أذكار في أي وقت","وِرد يومي يُقال في أي وقت من اليوم"],en:["Dhikr","Daily Dhikr","A daily wird you can say at any time of day"],tr:["Zikir","Günlük Zikir","Günün herhangi bir vaktinde okunabilen günlük vird"],ur:["اذکار","کسی بھی وقت کے اذکار","روزانہ کا ورد جو دن میں کسی بھی وقت پڑھا جا سکتا ہے"],hi:["अज़कार","किसी भी वक़्त के अज़कार","रोज़ाना का विर्द जो दिन में किसी भी वक़्त पढ़ा जा सकता है"]},
   thana:{ar:["أدعية الثناء","أدعية الثناء على الله","ثناء على الله بما أثنى به على نفسه وبما علّمه النبي ﷺ"],en:["Praise","Praising Allah","Praising Allah with the words He and His Prophet ﷺ taught"],tr:["Sena","Allah'a Sena Duaları","Allah'ı, kendisinin ve Peygamber'inin (s.a.v.) öğrettiği sözlerle övmek"],ur:["ثنا","اللہ کی ثنا کی دعائیں","اللہ کی ثنا ان الفاظ سے جو اس نے اور اس کے نبی ﷺ نے سکھائے"],hi:["सना","अल्लाह की सना की दुआएं","अल्लाह की सना उन अलफ़ाज़ से जो उसने और उसके नबी ﷺ ने सिखाए"]},
+  umrah:{ar:["العمرة","عدّاد العمرة","اضغط الزر الكبير كلما أكملت شوطًا، ويبقى العدد محفوظًا حتى لو أغلقت التطبيق"],en:["Umrah","Umrah Counter","Tap the big button each time you finish a round. The count stays saved even if you close the app."],tr:["Umre","Umre Sayacı","Her şavtı bitirdiğinde büyük düğmeye dokun. Uygulamayı kapatsan bile sayı kayıtlı kalır."],ur:["عمرہ","عمرہ کاؤنٹر","ہر چکر مکمل ہونے پر بڑا بٹن دبائیں۔ ایپ بند کرنے پر بھی گنتی محفوظ رہتی ہے۔"],hi:["उमरा","उमरा काउंटर","हर चक्कर पूरा होने पर बड़ा बटन दबाएं। ऐप बंद करने पर भी गिनती सेव रहती है।"]},
   ruqyah:{ar:["الرقية","الرقية الشرعية","يقرؤها المسلم على نفسه أو على المريض، مع النفث ووضع اليد على موضع الألم"],en:["Ruqyah","Ruqyah (Healing Recitation)","Recite over yourself or the sick, blowing gently and placing your hand where it hurts"],tr:["Rukye","Şer'î Rukye","Kendine veya hastaya okunur; hafifçe üflenir ve el ağrıyan yere konur"],ur:["رقیہ","شرعی رقیہ (دم)","اپنے اوپر یا مریض پر پڑھیں، ہلکا سا پھونکیں اور درد کی جگہ پر ہاتھ رکھیں"],hi:["रुक़्या", "शरई रुक़्या (दम)", "अपने ऊपर या मरीज़ पर पढ़ें, हल्का सा फूंकें और दर्द की जगह पर हाथ रखें"]}
 };
 const COLL={
@@ -694,6 +730,7 @@ const SECTIONS=[
   {id:"prayer",daily:false,items:PRAYER},
   {id:"dhikr",daily:true,items:DHIKR},
   {id:"thana",daily:false,items:THANA},
+  {id:"umrah",custom:true,items:[]},
   {id:"ruqyah",daily:false,items:RUQYAH}
 ];
 
@@ -725,6 +762,7 @@ function secState(sec){
 }
 function save(){store.set("adhkar.progress.v3",progress)}
 function defaultSection(){
+  if(typeof umrahActive==='function'&&umrahActive()) return "umrah";
   const h=new Date().getHours();
   if(h>=3&&h<12) return "morning";
   if(h>=15&&h<21) return "evening";
@@ -767,6 +805,102 @@ function applyLang(){
 }
 
 const R=27,C=2*Math.PI*R;
+/* ============ عدّاد العمرة ============ */
+const UMRAH_UI={
+ ar:{tawaf:"الطواف",sai:"السعي",tapLabel:"اضغط عند إكمال الشوط",of:n=>`من ${n}`,next:"الشوط القادم",tawafDir:"ابدأ من محاذاة الحجر الأسود، والكعبة عن يسارك",saiOdd:"من الصفا إلى المروة",saiEven:"من المروة إلى الصفا",undo:"تراجع عن آخر شوط",resetAll:"ابدأ عمرة جديدة",confirm:"اضغط مرة ثانية للتأكيد",round:"الشوط",
+  tawafDone:"اكتمل الطواف ✓",tawafNext:"صلِّ ركعتين خلف مقام إبراهيم إن تيسّر، واشرب من زمزم، ثم توجّه إلى الصفا.",goSai:"ابدأ السعي",saiDone:"اكتمل السعي ✓",saiNext:"بقي الحلق أو التقصير لتتمّ عمرتك. تقبّل الله منك.",guide:"أدعية وتنبيهات",empty:"لم تسجّل أي شوط بعد",stat:(t,s)=>`الطواف ${t}/٧ · السعي ${s}/٧`},
+ en:{tawaf:"Tawaf",sai:"Sa'i",tapLabel:"Tap when you finish a round",of:n=>`of ${n}`,next:"Next round",tawafDir:"start in line with the Black Stone, keeping the Ka'bah on your left",saiOdd:"from Safa to Marwah",saiEven:"from Marwah to Safa",undo:"Undo last round",resetAll:"Start a new Umrah",confirm:"Tap again to confirm",round:"Round",
+  tawafDone:"Tawaf complete ✓",tawafNext:"Pray two rak'ahs behind Maqam Ibrahim if you can, drink Zamzam, then head to Safa.",goSai:"Start Sa'i",saiDone:"Sa'i complete ✓",saiNext:"Shave or trim your hair to complete your Umrah. May Allah accept it from you.",guide:"Supplications and reminders",empty:"No rounds recorded yet",stat:(t,s)=>`Tawaf ${t}/7 · Sa'i ${s}/7`},
+ tr:{tawaf:"Tavaf",sai:"Sa'y",tapLabel:"Şavtı bitirince dokun",of:n=>`/ ${n}`,next:"Sıradaki şavt",tawafDir:"Hacerülesved hizasından başla, Kâbe solunda kalsın",saiOdd:"Safa'dan Merve'ye",saiEven:"Merve'den Safa'ya",undo:"Son şavtı geri al",resetAll:"Yeni umreye başla",confirm:"Onaylamak için tekrar dokun",round:"Şavt",
+  tawafDone:"Tavaf tamamlandı ✓",tawafNext:"Mümkünse Makam-ı İbrahim'in arkasında iki rekât namaz kıl, zemzem iç, sonra Safa'ya yönel.",goSai:"Sa'ye başla",saiDone:"Sa'y tamamlandı ✓",saiNext:"Umreni tamamlamak için saçını tıraş et veya kısalt. Allah kabul etsin.",guide:"Dualar ve hatırlatmalar",empty:"Henüz şavt kaydedilmedi",stat:(t,s)=>`Tavaf ${t}/7 · Sa'y ${s}/7`},
+ ur:{tawaf:"طواف",sai:"سعی",tapLabel:"چکر مکمل ہونے پر دبائیں",of:n=>`کل ${n}`,next:"اگلا چکر",tawafDir:"حجرِ اسود کی سیدھ سے شروع کریں، کعبہ آپ کے بائیں جانب رہے",saiOdd:"صفا سے مروہ تک",saiEven:"مروہ سے صفا تک",undo:"آخری چکر واپس لیں",resetAll:"نیا عمرہ شروع کریں",confirm:"تصدیق کے لیے دوبارہ دبائیں",round:"چکر",
+  tawafDone:"طواف مکمل ✓",tawafNext:"ممکن ہو تو مقامِ ابراہیم کے پیچھے دو رکعت پڑھیں، زمزم پئیں، پھر صفا کی طرف جائیں۔",goSai:"سعی شروع کریں",saiDone:"سعی مکمل ✓",saiNext:"عمرہ مکمل کرنے کے لیے بال منڈوائیں یا کتروائیں۔ اللہ قبول فرمائے۔",guide:"دعائیں اور یاد دہانیاں",empty:"ابھی کوئی چکر درج نہیں ہوا",stat:(t,s)=>`طواف ${t}/۷ · سعی ${s}/۷`},
+ hi:{tawaf:"तवाफ़",sai:"सई",tapLabel:"चक्कर पूरा होने पर दबाएं",of:n=>`कुल ${n}`,next:"अगला चक्कर",tawafDir:"हजरे अस्वद की सीध से शुरू करें, काबा आपके बाएं तरफ़ रहे",saiOdd:"सफ़ा से मरवा तक",saiEven:"मरवा से सफ़ा तक",undo:"आख़िरी चक्कर वापस लें",resetAll:"नया उमरा शुरू करें",confirm:"पक्का करने के लिए दोबारा दबाएं",round:"चक्कर",
+  tawafDone:"तवाफ़ पूरा ✓",tawafNext:"हो सके तो मक़ामे इब्राहीम के पीछे दो रकअत पढ़ें, ज़मज़म पिएं, फिर सफ़ा की तरफ़ जाएं।",goSai:"सई शुरू करें",saiDone:"सई पूरी ✓",saiNext:"उमरा पूरा करने के लिए बाल मुंडवाएं या कटवाएं। अल्लाह क़बूल फ़रमाए।",guide:"दुआएं और याद दिलाने वाली बातें",empty:"अभी कोई चक्कर दर्ज नहीं हुआ",stat:(t,s)=>`तवाफ़ ${t}/7 · सई ${s}/7`}
+};
+const UMRAH_GUIDE=[
+ {label:{ar:"بين الركن اليماني والحجر الأسود:",en:"Between the Yemeni Corner and the Black Stone:",tr:"Rükn-i Yemânî ile Hacerülesved arasında:",ur:"رکنِ یمانی اور حجرِ اسود کے درمیان:",hi:"रुक्ने यमानी और हजरे अस्वद के बीच:"},
+  ar:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+  tl:"Rabbanā ātinā fi d-dunyā hasanatan wa fi l-ākhirati hasanatan wa qinā 'adhāba n-nār.",
+  en:"Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+  tr:"Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
+  ur:"اے ہمارے رب! ہمیں دنیا میں بھلائی دے اور آخرت میں بھلائی دے اور ہمیں آگ کے عذاب سے بچا۔",
+  hi:"ऐ हमारे रब! हमें दुनिया में भलाई दे और आख़िरत में भलाई दे और हमें आग के अज़ाब से बचा।"},
+ {label:{ar:"بعد الطواف عند مقام إبراهيم:",en:"After Tawaf, at Maqam Ibrahim:",tr:"Tavaftan sonra Makam-ı İbrahim'de:",ur:"طواف کے بعد مقامِ ابراہیم پر:",hi:"तवाफ़ के बाद मक़ामे इब्राहीम पर:"},
+  ar:"وَاتَّخِذُوا مِن مَّقَامِ إِبْرَاهِيمَ مُصَلًّى",
+  tl:"Wattakhidhū min maqāmi Ibrāhīma musallā.",
+  en:"And take the station of Ibrahim as a place of prayer.",
+  tr:"İbrahim'in makamından bir namaz yeri edinin.",
+  ur:"اور مقامِ ابراہیم کو نماز کی جگہ بناؤ۔",
+  hi:"और मक़ामे इब्राहीम को नमाज़ की जगह बनाओ।"},
+ {label:{ar:"على الصفا عند بدء السعي (أول مرة فقط):",en:"On Safa when starting Sa'i (the first time only):",tr:"Sa'ye başlarken Safa'da (yalnızca ilk sefer):",ur:"سعی شروع کرتے وقت صفا پر (صرف پہلی بار):",hi:"सई शुरू करते समय सफ़ा पर (सिर्फ़ पहली बार):"},
+  ar:"إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ، أَبْدَأُ بِمَا بَدَأَ اللَّهُ بِهِ",
+  tl:"Inna s-safā wa l-marwata min sha'ā'iri llāh. Abda'u bimā bada'a llāhu bih.",
+  en:"Indeed, Safa and Marwah are among the symbols of Allah. I begin with what Allah began with.",
+  tr:"Şüphesiz Safa ile Merve Allah'ın nişanlarındandır. Allah'ın başladığı yerden başlıyorum.",
+  ur:"بے شک صفا اور مروہ اللہ کی نشانیوں میں سے ہیں۔ میں وہیں سے شروع کرتا ہوں جہاں سے اللہ نے شروع کیا۔",
+  hi:"बेशक सफ़ा और मरवा अल्लाह की निशानियों में से हैं। मैं वहीं से शुरू करता हूँ जहां से अल्लाह ने शुरू किया।"}
+];
+const UM_KEY="adhkar.umrah.v1";
+let um=store.get(UM_KEY,null);
+if(!um||!Array.isArray(um.tawaf)||!Array.isArray(um.sai)) um={mode:"tawaf",tawaf:[],sai:[]};
+function umSave(){store.set(UM_KEY,um)}
+function umrahActive(){
+  const all=um.tawaf.concat(um.sai);if(!all.length)return false;
+  const done=um.tawaf.length>=7&&um.sai.length>=7;
+  return !done&&Date.now()-Math.max.apply(null,all)<3*3600e3;
+}
+let umLock=0,wake=null;
+async function keepAwake(){try{if(navigator.wakeLock&&!wake){wake=await navigator.wakeLock.request("screen");wake.addEventListener("release",()=>{wake=null})}}catch(e){}}
+function releaseWake(){try{if(wake)wake.release()}catch(e){}wake=null}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&cur&&cur.custom)keepAwake()});
+const LOC={ar:"ar-EG",en:"en-US",tr:"tr-TR",ur:"ur-PK",hi:"hi-IN"};
+function fmtTime(ts){try{return new Date(ts).toLocaleTimeString(LOC[lang],{hour:"numeric",minute:"2-digit"})}catch(e){return ""}}
+function renderUmrah(list){
+  keepAwake();
+  const U=UMRAH_UI[lang],mode=um.mode==="sai"?"sai":"tawaf",arr=um[mode],c=arr.length,done=c>=7;
+  document.getElementById("reset").textContent=U.resetAll;
+  const dir=done?"":(mode==="tawaf"?U.tawafDir:(c%2===0?U.saiOdd:U.saiEven));
+  const beads=Array.from({length:7},(_,i)=>`<i class="${i<c?"on":""}"></i>`).join("");
+  const log=c?arr.map((ts,i)=>`<li><span>${esc(U.round)} ${num(i+1)}</span><span>${esc(fmtTime(ts))}</span></li>`).join(""):`<li class="empty">${esc(U.empty)}</li>`;
+  const tlOf=s=>(lang==="en"||lang==="hi")?s:(lang==="tr"?toTurkish(s):"");
+  const guide=UMRAH_GUIDE.map(g=>`<div class="g"><b>${esc(g.label[lang])}</b><p class="g-ar" lang="ar" dir="rtl">${esc(g.ar)}</p>${tlOf(g.tl)?`<p class="tl" dir="ltr">${esc(tlOf(g.tl))}</p>`:""}${lang!=="ar"?`<p class="g-mean" lang="${lang}">${esc(g[lang])}</p>`:""}</div>`).join("");
+  const doneTxt=mode==="tawaf"?U.tawafDone:U.saiDone;
+  list.innerHTML=`<div class="umrah">
+    <div class="seg" role="tablist">
+      <button type="button" role="tab" data-m="tawaf" aria-selected="${mode==="tawaf"}">${esc(U.tawaf)} <small>${num(um.tawaf.length)}/${num(7)}</small></button>
+      <button type="button" role="tab" data-m="sai" aria-selected="${mode==="sai"}">${esc(U.sai)} <small>${num(um.sai.length)}/${num(7)}</small></button>
+    </div>
+    ${done?`<div class="u-done"><strong>${esc(doneTxt)}</strong><p>${esc(mode==="tawaf"?U.tawafNext:U.saiNext)}</p>${mode==="tawaf"&&um.sai.length<7?`<button type="button" class="u-go" id="u-go">${esc(U.goSai)}</button>`:""}</div>`
+      :`<p class="u-next"><span>${esc(U.next)}: ${num(c+1)}</span> — ${esc(dir)}</p>`}
+    <button type="button" class="u-big${done?" is-done":""}" id="u-tap" ${done?"disabled":""} aria-label="${esc(U.tapLabel)}">
+      <span class="u-num">${num(c)}</span><span class="u-of">${esc(U.of(num(7)))}</span><span class="u-lab">${esc(done?doneTxt:U.tapLabel)}</span>
+    </button>
+    <div class="u-beads" aria-hidden="true">${beads}</div>
+    <button type="button" class="u-undo" id="u-undo" ${c?"":"disabled"}>↶ ${esc(U.undo)}</button>
+    <ol class="u-log">${log}</ol>
+    <details class="u-guide"><summary>${esc(U.guide)}</summary>${guide}</details>
+  </div>`;
+  list.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{um.mode=b.dataset.m;umSave();render()});
+  document.getElementById("u-tap").onclick=()=>{
+    const now=Date.now(),m=um.mode==="sai"?"sai":"tawaf";
+    if(now-umLock<1500||um[m].length>=7)return;
+    umLock=now;um[m].push(now);umSave();
+    try{navigator.vibrate&&navigator.vibrate(um[m].length>=7?[60,60,60,60,140]:40)}catch(e){}
+    render();
+    const nb=document.getElementById("u-tap");
+    if(nb&&!nb.disabled){nb.classList.add("locked");setTimeout(()=>{const x=document.getElementById("u-tap");if(x)x.classList.remove("locked")},1500)}
+  };
+  document.getElementById("u-undo").onclick=()=>{um[mode].pop();umSave();render()};
+  const go=document.getElementById("u-go");if(go)go.onclick=()=>{um.mode="sai";umSave();render();window.scrollTo({top:0})};
+  umrahSummary();
+}
+function umrahSummary(){
+  document.getElementById("stat").textContent=UMRAH_UI[lang].stat(num(um.tawaf.length),num(um.sai.length));
+  document.getElementById("bar").style.width=((um.tawaf.length+um.sai.length)/14*100)+"%";
+  document.getElementById("finish").hidden=true;
+}
+
 function render(){
   const id=(location.hash||"").slice(1);
   cur=SECTIONS.find(s=>s.id===id)||SECTIONS.find(s=>s.id===defaultSection());
@@ -777,6 +911,9 @@ function render(){
   document.getElementById("sec-title").textContent=SEC_UI[cur.id][lang][1];
   document.getElementById("sec-hint").textContent=SEC_UI[cur.id][lang][2];
   const list=document.getElementById("list");list.innerHTML="";
+  const rbtn=document.getElementById("reset");rbtn.textContent=UI[lang].reset;rbtn.dataset.armed="";
+  if(cur.custom){renderUmrah(list);return}
+  releaseWake();
   const u=UI[lang];
   cur.items.forEach((it,i)=>{
     const tr=trans(it);
@@ -807,6 +944,7 @@ function paint(i){
   card.querySelector(".count span").innerHTML=done?"✓":`${num(left)}${it.n>1?`<small>×${num(it.n)}</small>`:""}`;
 }
 function summary(){
+  if(cur.custom){umrahSummary();return}
   const st=secState(cur);let total=0,got=0,doneN=0;
   cur.items.forEach((it,i)=>{const c=Math.min(st.c[i]||0,it.n);total+=it.n;got+=c;if(c>=it.n)doneN++});
   document.getElementById("bar").style.width=(got/total*100)+"%";
@@ -819,7 +957,15 @@ function tap(i){
   st.c[i]=c+1;save();paint(i);summary();
   try{navigator.vibrate&&navigator.vibrate(c+1>=it.n?[30,40,30]:12)}catch(e){}
 }
-document.getElementById("reset").onclick=()=>{progress[cur.id]={day:todayKey(),c:{}};save();render();window.scrollTo({top:0,behavior:"smooth"})};
+document.getElementById("reset").onclick=()=>{
+  const rb=document.getElementById("reset");
+  if(cur.custom){
+    if(rb.dataset.armed){um={mode:"tawaf",tawaf:[],sai:[]};umSave();if(location.hash!=="#umrah"){location.hash="umrah"}else{render()}return}
+    rb.dataset.armed="1";rb.textContent=UMRAH_UI[lang].confirm;
+    setTimeout(()=>{if(rb.dataset.armed){rb.dataset.armed="";rb.textContent=UMRAH_UI[lang].resetAll}},3000);
+    return;
+  }
+  progress[cur.id]={day:todayKey(),c:{}};save();render();window.scrollTo({top:0,behavior:"smooth"})};
 function applyFs(){document.documentElement.style.setProperty("--size",fs+"rem");store.set("adhkar.fs",fs)}
 document.getElementById("fs-up").onclick=()=>{fs=Math.min(2.4,+(fs+0.15).toFixed(2));applyFs()};
 document.getElementById("fs-down").onclick=()=>{fs=Math.max(1.05,+(fs-0.15).toFixed(2));applyFs()};
